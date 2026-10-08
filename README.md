@@ -1,103 +1,318 @@
-Nama : Muchamad Rava Alvriansyah
-Matkul : PBO-A
-Tugas PBO – Konversi Java ke PHP
+# Nama : Muchamad Rava Alvriansyah
 
-Materi 01 – Class
-Folder: 01 Class/ (iPhone.php, Main.php)
+# Matkul : PBO-A
 
-Screenshot:
-<img width="957" height="548" alt="01" src="https://github.com/user-attachments/assets/eafbfd9f-4262-4240-a04c-4b663a4163fb" />
+# Tugas PBO – Konversi Java ke PHP
 
-Penjelasan:
+---
 
-iPhone adalah class, yaitu cetakan yang mendefinisikan data ($color, $storage) dan perilaku (method) sebuah iPhone.
-Method __construct() adalah constructor. Ia berjalan otomatis saat new iPhone("Red", "128GB") dipanggil dan langsung mengisi property. Di Java, constructor harus bernama sama dengan class-nya, sedangkan di PHP selalu __construct.
-$this->color = $color; artinya "isi property color milik objek ini dengan nilai parameter $color". Setara dengan this.color = color; di Java.
-Property biasanya dibuat private agar tidak diubah sembarangan dari luar (enkapsulasi). Untuk membacanya disediakan getter: getColor() dan getStorage().
-Di Main.php, require_once 'iPhone.php' memuat file class. Ini mirip import di Java, tapi PHP memuat file secara langsung.
-$iphone13 dan $iphone14 adalah dua objek dari satu class yang sama. Prosesnya disebut instantiation. Datanya terpisah: iPhone 13 berwarna Red/128GB, iPhone 14 berwarna Grey/256GB.
-PHP_EOL dipakai untuk pindah baris, mirip \n atau System.out.println() di Java.
+## Materi 01 – Class
 
-Materi 02 – Constructor
-Folder: 02 Constructor/ (Mahasiswa.php, Aplikasi.php)
+**Folder:** `01 Class/`
+**File:** `iPhone.php`, `Main.php`
 
-Screenshot:
-<img width="932" height="554" alt="02" src="https://github.com/user-attachments/assets/376c389e-57fe-4486-ac6b-a86340cdd679" />
+**Screenshot:**
 
-Penjelasan:
+[SS Materi 01](img/01.png)
 
-Mahasiswa adalah class yang mendefinisikan data ($nama, $nim, $umur) dan perilaku (getter, setter, dan tampilkanInfo()) seorang mahasiswa.
-new Mahasiswa() memanggil constructor tanpa argumen, sehingga property memakai nilai default. Karena itu output pertama menampilkan Umur: 0, sedangkan nama dan NIM kosong.
-setNama(), setNim(), dan setUmur() adalah setter, yaitu method untuk mengisi atau mengubah nilai property setelah objek dibuat. Hasilnya dibaca lagi dengan getter: getNama(), getNim(), dan getUmur().
-$soja->setNama("Soja Purnamasari"); artinya "isi property nama milik objek $soja dengan nilai tersebut". Setara dengan soja.setNama("Soja Purnamasari"); di Java.
-new Mahasiswa("Nenden Nuraini", "4523210144", 17) adalah constructor lengkap. Semua data langsung diisi saat objek dibuat, tanpa perlu setter, lalu ditampilkan lewat tampilkanInfo().
-Di Java, dua cara pembuatan objek ini memakai dua constructor berbeda (overloading). Di PHP tidak ada overloading constructor, jadi cukup satu __construct() dengan parameter default, misalnya $nama = "" dan $umur = 0.
-$soja dan $nenden adalah dua objek dari satu class yang sama. Datanya terpisah: Soja berumur 15 dan Nenden berumur 17.
-Perbedaan format output: Nama : (ada spasi sebelum titik dua) berasal dari echo di Aplikasi.php, sedangkan Nama: (tanpa spasi) berasal dari method tampilkanInfo() di Mahasiswa.php.
+### Penjelasan
 
-Materi 03 – Inheritance (Pewarisan)
-Folder: 03 inheritance/ (BangunDatar.php, Lingkaran.php, Persegi.php, Segitiga.php, Mahasiswa.php, MahasiswaInternational.php, App.php, Main.php)
+Materi pertama membahas konsep dasar **class dan object** menggunakan contoh `iPhone`.
 
-Screenshot App.php (bangun datar):
-<img width="954" height="551" alt="03 app" src="https://github.com/user-attachments/assets/c3fbeaec-4ebb-4cf7-9e95-3e7c485d1f4f" />
+Di dalam class `iPhone` terdapat dua property, yaitu `$color` untuk menyimpan warna dan `$storage` untuk menyimpan kapasitas penyimpanan.
 
-Screenshot Main.php (mahasiswa internasional):
-<img width="959" height="535" alt="03 main" src="https://github.com/user-attachments/assets/4b188e5a-21fe-40e9-8754-749ade14b74c" />
-Penjelasan:
+Nilai property diberikan melalui constructor `__construct`. Constructor akan otomatis dijalankan ketika object dibuat menggunakan keyword `new`.
 
-Inheritance (pewarisan) adalah mekanisme di mana class anak otomatis memiliki property dan method class induk. Di PHP ditulis dengan extends, sama seperti di Java.
-Pada folder bangun datar, BangunDatar menjadi class induk, sedangkan Lingkaran, Persegi, dan Segitiga adalah class anak. Induk menyediakan kerangka umum (luas() dan keliling()), lalu tiap anak mengisinya dengan rumus sendiri.
-Overriding terjadi saat class anak menulis ulang method dengan nama yang sama seperti milik induk. Contohnya luas() pada Lingkaran memakai rumus πr², sedangkan pada Persegi memakai sisi × sisi.
-Segitiga hanya meng-override luas(), tidak keliling(). Akibatnya, saat keliling() dipanggil, PHP menjalankan versi milik induk dan mencetak pesan "Menghitung keliling bangun datar". Ini bukti bahwa method yang tidak ditimpa tetap diwarisi.
-round() dipakai pada hasil lingkaran untuk membulatkan ke 2 angka di belakang koma, karena nilai π menghasilkan desimal yang panjang.
-Pada folder mahasiswa, MahasiswaInternational extends Mahasiswa mewarisi $nama, $nim, $umur, lalu menambah property baru $negaraAsal yang khusus untuk mahasiswa asing.
-parent::__construct(...) memanggil constructor induk agar data dasar (nama, NIM, umur) diisi oleh class induk, sehingga tidak perlu menulis ulang. Setara dengan super(...) di Java.
-parent::tampilkanInfo() menjalankan method induk terlebih dahulu, lalu class anak menambahkan baris info negara asal. Ini cara memperluas method tanpa menulis ulang semuanya.
-PHP tidak punya constructor overloading seperti Java. Sebagai gantinya, constructor MahasiswaInternational memakai ...$args untuk menampung semua argumen sebagai array, lalu count($args) dicek (0, 3, atau 4 argumen) untuk menentukan cara mengisi datanya.
+Contohnya, pada `Main.php` dibuat object `$iphone13` dan `$iphone14`. Kedua object tersebut berasal dari class yang sama, tetapi masing-masing dapat mempunyai nilai warna dan storage yang berbeda.
 
-Materi 04 – Polymorphism
-Folder: 04 polymorphism/ (Handphone.php, Smartphone.php, FeaturePhone.php, Main.php)
+Property dan method pada object PHP menggunakan beberapa aturan sintaks yang berbeda dengan Java. PHP menggunakan tanda `$` pada nama variabel, operator `->` untuk mengakses property atau method object, dan tanda `.` untuk menggabungkan string.
 
-Screenshot:
-<img width="451" height="170" alt="04" src="https://github.com/user-attachments/assets/a214fbdb-94c5-48ea-af0d-c0e01345c9d2" />
-Penjelasan:
+Method `getColor()` dan `getStorage()` digunakan untuk mengambil nilai dari masing-masing property.
 
-Polymorphism berarti "banyak bentuk". Satu nama method yang sama bisa menghasilkan perilaku berbeda, tergantung objek yang memanggilnya.
-Handphone adalah class induk yang mendefinisikan perilaku umum (nyalakan(), matikan(), telepon()). Smartphone dan FeaturePhone adalah class anak yang meng-override ketiga method tersebut sesuai karakter masing-masing. Smartphone menjalani proses booting dan mendukung video call, sedangkan feature phone hanya melakukan panggilan suara.
-Pada Main.php, semua objek dikumpulkan dalam satu array $daftarHandphone. Saat di-loop, kode cukup menulis $hp->nyalakan() tanpa peduli jenis objeknya. PHP sendiri yang memilih versi method yang sesuai. Inilah inti polymorphism: satu pemanggilan, banyak hasil.
-Method khusus tidak bisa dipanggil sembarangan karena tidak semua Handphone punya method itu. aksesInternet() hanya ada di Smartphone, dan mainGameSnake() hanya ada di FeaturePhone. Karena itu dipakai instanceof untuk mengecek jenis objek terlebih dahulu sebelum memanggilnya.
-Di Java, setelah instanceof biasanya perlu casting (misalnya ((Smartphone) hp).aksesInternet()). Di PHP hal itu tidak diperlukan, method bisa langsung dipanggil.
-Property dibuat protected supaya tetap terlindungi dari akses luar, tetapi masih bisa dipakai oleh class turunan. Kalau private, class anak tidak bisa mengaksesnya.
+Jadi, materi ini menunjukkan bahwa **class berfungsi sebagai rancangan**, sedangkan object merupakan hasil dari class tersebut yang dapat digunakan dalam program.
 
-Materi 05 – Asosiasi, Agregasi, dan Komposisi
-Folder: 05 asosiasikomposisi/ (Dokter.php, Pasien.php, Tim.php, Pemain.php, Buku.php, Bab.php, Main.php)
+---
 
-Screenshot:
-<img width="456" height="146" alt="05" src="https://github.com/user-attachments/assets/6930d899-9540-4ea1-929d-ba083355ef35" />
+## Materi 02 – Constructor
 
-Penjelasan:
+**Folder:** `02 Constructor/`
+**File:** `Mahasiswa.php`, `Aplikasi.php`
 
-Asosiasi, Agregasi, dan Komposisi adalah tiga jenis hubungan antar class. Bedanya ada pada seberapa kuat satu objek bergantung pada objek lainnya.
-Asosiasi (Dokter dan Pasien) adalah hubungan paling longgar, bersifat "menggunakan". Dokter tidak menyimpan Pasien sebagai bagian dari dirinya. Objek Pasien hanya dikirim sementara lewat parameter method merawat($pasien). Setelah method selesai, hubungan itu selesai, dan keduanya tetap hidup mandiri.
-Agregasi (Tim dan Pemain) adalah hubungan "memiliki" yang masih longgar. Objek Pemain dibuat di luar Tim, lalu dimasukkan lewat method atau constructor. Tim hanya menyimpan referensinya. Jika Tim dihapus, objek Pemain tetap ada dan bisa dipakai di tim lain.
-Komposisi (Buku dan Bab) adalah hubungan "memiliki" yang paling kuat. Objek Bab dibuat di dalam constructor Buku, sehingga Bab tidak bisa berdiri sendiri. Saat $buku = null dan objeknya dibersihkan, bab-babnya ikut hilang.
-Cara cepat membedakan agregasi dan komposisi: lihat di mana objek bagian dibuat. Dibuat di luar lalu dimasukkan berarti agregasi. Dibuat di dalam class pemilik berarti komposisi.
-Di Java, kumpulan objek biasanya memakai List<Pemain> atau ArrayList. Di PHP cukup memakai array biasa, misalnya private array $pemain = []; lalu $this->pemain[] = $pemain;.
+**Screenshot:**
 
+[SS Materi 02](img/02.png)
 
-Materi 06 – Abstract Class dan Interface
-Folder: 06 abstractinterface/ (Vehicle.php, Movable.php, Fuelable.php, FuelableDefault.php, Car.php, Boat.php, Motor.php, Building.php, Main.php)
+### Penjelasan
 
-Screenshot:
-<img width="1376" height="264" alt="06" src="https://github.com/user-attachments/assets/22998820-1d5c-4e8c-87c1-eaf92623f048" />
+Pada materi ini, constructor diterapkan pada class `Mahasiswa`.
 
-Penjelasan:
+Class tersebut memiliki tiga property yang bersifat `private`, yaitu:
 
-Abstract class Vehicle adalah kerangka dasar untuk semua objek di folder ini. Ia menyimpan data umum ($name) dan method showInfo(). Karena bersifat abstrak, ia tidak bisa dibuat langsung dengan new Vehicle(). Class ini hanya berfungsi sebagai induk yang diwarisi class lain.
-Interface adalah kontrak yang hanya berisi nama method, tanpa isi. Movable mewajibkan adanya move(), dan Fuelable mewajibkan adanya refuel(). Class yang implements interface harus menulis isi semua method tersebut, kalau tidak PHP akan menampilkan error.
-Car dan Boat mewarisi Vehicle sekaligus mengimplementasikan Movable dan Fuelable. Jadi keduanya punya showInfo() dari induk, serta move() dan refuel() yang ditulis sendiri. Boat punya refuel() khusus untuk kapal, sehingga pesannya berbeda dari mobil.
-Perbedaan penting dari Java: interface di PHP tidak bisa memiliki default method (method dengan isi bawaan). Sebagai gantinya dipakai trait, yaitu kumpulan method yang bisa "ditempelkan" ke class. Trait FuelableDefault berisi refuel() bawaan dengan pesan "Mengisi bahan bakar umum."
-Motor memakai trait tersebut lewat use FuelableDefault;, sehingga tidak perlu menulis ulang refuel(). Kontrak Fuelable tetap terpenuhi karena method-nya sudah dibawa oleh trait.
-Building hanya mewarisi Vehicle dan tidak mengimplementasikan interface apa pun. Akibatnya ia hanya punya showInfo(), tanpa move() dan refuel(). Memanggil kedua method itu pada Building akan menimbulkan error, dan itulah alasan kedua barisnya dikomentari di Main.php.
+```text
+$nama
+$nim
+$umur
+```
 
-<img width="593" height="272" alt="image" src="https://github.com/user-attachments/assets/36087306-f76f-4088-9d8b-94cea801eb42" />
+Karena menggunakan `private`, property tidak dapat diakses secara langsung dari luar class. Untuk mengatur dan mengambil nilainya digunakan getter dan setter. Konsep ini berkaitan dengan **encapsulation**, yaitu membatasi akses langsung terhadap data object.
+
+Java dapat mempunyai beberapa constructor dengan parameter yang berbeda melalui constructor overloading. PHP mempunyai cara yang berbeda sehingga pada contoh ini digunakan **default parameter**.
+
+Dengan adanya nilai default, object tetap dapat dibuat walaupun tidak semua data diberikan.
+
+Contohnya:
+
+```php
+new Mahasiswa();
+```
+
+akan menggunakan data bawaan yang sudah ditentukan pada constructor.
+
+Sementara itu:
+
+```php
+new Mahasiswa("Nenden Nuraini", "4523210144", 17);
+```
+
+akan memberikan nama, NIM, dan umur secara langsung ketika object dibuat.
+
+Method `tampilkanInfo()` kemudian digunakan untuk menampilkan informasi mahasiswa yang sudah disimpan di dalam object.
+
+---
+
+## Materi 03 – Inheritance (Pewarisan)
+
+**Folder:** `03 inheritance/`
+
+**File:** `BangunDatar.php`, `Lingkaran.php`, `Persegi.php`, `Segitiga.php`, `Mahasiswa.php`, `MahasiswaInternational.php`, `App.php`, `Main.php`
+
+### Screenshot `App.php`
+
+[SS Materi 03 App](img/03app.png)
+
+### Screenshot `Main.php`
+
+[SS Materi 03 Main](img/03main.png)
+
+### Penjelasan
+
+Inheritance atau pewarisan digunakan agar sebuah class dapat memperoleh property dan method dari class lainnya.
+
+Pada contoh pertama terdapat `BangunDatar` sebagai class induk. Class tersebut kemudian diturunkan menjadi:
+
+* `Lingkaran`
+* `Persegi`
+* `Segitiga`
+
+Ketiga class tersebut mempunyai hubungan dengan `BangunDatar` melalui keyword `extends`.
+
+Masing-masing bentuk dapat memiliki cara sendiri dalam menghitung luas dan keliling. Karena itu, method `luas()` dan `keliling()` dapat dibuat ulang pada class turunannya. Proses penggantian implementasi method ini disebut **overriding**.
+
+Khusus pada `Segitiga`, method `keliling()` tidak dibuat ulang. Jadi ketika method tersebut dipanggil, program masih menggunakan method yang berasal dari class `BangunDatar`.
+
+Selain contoh bangun datar, inheritance juga diterapkan pada data mahasiswa. `MahasiswaInternational` merupakan turunan dari `Mahasiswa` dan mempunyai tambahan property `$negaraAsal`.
+
+Untuk tetap menggunakan constructor dari class induk, digunakan:
+
+```php
+parent::__construct(...)
+```
+
+Sedangkan:
+
+```php
+parent::tampilkanInfo()
+```
+
+digunakan ketika ingin menjalankan method milik class induk.
+
+Pada bagian constructor `MahasiswaInternational`, penggunaan `...$args` membantu menangani beberapa kemungkinan jumlah argument karena PHP tidak menggunakan constructor overloading seperti pada Java.
+
+Untuk membuat hasil perhitungan lebih mudah dibaca, nilai perhitungan luas dan keliling dapat dibulatkan menggunakan `round()`.
+
+---
+
+## Materi 04 – Polymorphism
+
+**Folder:** `04 polymorphism/`
+**File:** `Handphone.php`, `Smartphone.php`, `FeaturePhone.php`, `Main.php`
+
+**Screenshot:**
+
+[SS Materi 04](img/04.png)
+
+### Penjelasan
+
+Materi keempat membahas **polymorphism**, yaitu kemampuan beberapa object untuk menjalankan method yang sama dengan implementasi yang berbeda.
+
+Class dasar yang digunakan adalah `Handphone`. Dari class tersebut dibuat dua turunan, yaitu:
+
+```text
+Handphone
+├── Smartphone
+└── FeaturePhone
+```
+
+`Smartphone` dan `FeaturePhone` sama-sama mempunyai method seperti `nyalakan()`, `matikan()`, dan `telepon()`. Namun isi method pada masing-masing class disesuaikan dengan karakteristik perangkatnya.
+
+Contohnya, smartphone dapat melakukan proses booting dan video call, sedangkan feature phone lebih sederhana dan digunakan untuk komunikasi suara.
+
+Pada `Main.php`, object dari kedua jenis handphone dimasukkan ke dalam array `$daftarHandphone`. Array tersebut kemudian diproses menggunakan perulangan.
+
+Ketika kode:
+
+```php
+$hp->nyalakan();
+```
+
+dijalankan, PHP akan menentukan implementasi method berdasarkan object yang sedang diproses.
+
+Selain itu, `instanceof` digunakan untuk mengetahui apakah sebuah object termasuk `Smartphone` atau `FeaturePhone`.
+
+Dengan cara tersebut, method khusus seperti `aksesInternet()` dan `mainGameSnake()` hanya dipanggil pada object yang memang memiliki method tersebut.
+
+Property `protected` digunakan agar property dapat digunakan oleh class turunan tanpa membuatnya dapat diakses langsung dari luar class.
+
+---
+
+## Materi 05 – Asosiasi, Agregasi, dan Komposisi
+
+**Folder:** `05 asosiasikomposisi/`
+
+**File:** `Dokter.php`, `Pasien.php`, `Tim.php`, `Pemain.php`, `Buku.php`, `Bab.php`, `Main.php`
+
+**Screenshot:**
+
+[SS Materi 05](img/05.png)
+
+### Penjelasan
+
+Materi ini membahas cara beberapa object saling berhubungan dalam pemrograman berorientasi objek. Terdapat tiga bentuk hubungan yang digunakan, yaitu **asosiasi, agregasi, dan komposisi**.
+
+### 1. Asosiasi
+
+Contoh asosiasi pada program adalah hubungan antara `Dokter` dan `Pasien`.
+
+Dokter dapat menerima object pasien melalui parameter pada method:
+
+```php
+merawat($pasien)
+```
+
+Dalam hubungan ini, dokter dan pasien tidak bergantung satu sama lain untuk tetap menjadi object. Keduanya dapat dibuat secara terpisah.
+
+### 2. Agregasi
+
+Contoh berikutnya adalah hubungan antara `Tim` dan `Pemain`.
+
+Object pemain dibuat terlebih dahulu kemudian diberikan kepada object tim.
+
+Secara sederhana:
+
+```text
+Pemain dibuat
+     ↓
+Dimasukkan ke Tim
+```
+
+Karena object pemain dibuat di luar tim, pemain tetap dapat digunakan walaupun object tim tidak digunakan lagi.
+
+### 3. Komposisi
+
+Komposisi diterapkan pada hubungan `Buku` dan `Bab`.
+
+Pada hubungan ini, object `Bab` dibuat sebagai bagian dari object `Buku`. Artinya, keberadaan bab berkaitan langsung dengan object buku yang membuatnya.
+
+Perbedaan utama ketiganya dapat dilihat dari tingkat keterikatan antar-object:
+
+| Jenis Hubungan | Contoh          | Tingkat Ketergantungan |
+| -------------- | --------------- | ---------------------- |
+| Asosiasi       | Dokter - Pasien | Rendah                 |
+| Agregasi       | Tim - Pemain    | Sedang                 |
+| Komposisi      | Buku - Bab      | Tinggi                 |
+
+Pada saat melakukan konversi dari Java, struktur `List<Pemain>` dapat digantikan menggunakan `array` pada PHP.
+
+---
+
+## Materi 06 – Abstract Class dan Interface
+
+**Folder:** `06 abstractinterface/`
+
+**File:** `Vehicle.php`, `Movable.php`, `Fuelable.php`, `FuelableDefault.php`, `Car.php`, `Boat.php`, `Motor.php`, `Building.php`, `Main.php`
+
+**Screenshot:**
+
+[SS Materi 06](img/06.png)
+
+### Penjelasan
+
+Materi terakhir membahas beberapa konsep OOP yang digunakan untuk membuat struktur program menjadi lebih teratur, yaitu **abstract class**, **interface**, dan **trait**.
+
+`Vehicle` digunakan sebagai abstract class yang menjadi dasar dari beberapa jenis object kendaraan.
+
+Di dalamnya terdapat property `$name` dan method `showInfo()`.
+
+Karena merupakan abstract class, `Vehicle` digunakan sebagai class dasar dan tidak dibuat menjadi object secara langsung.
+
+Selanjutnya terdapat interface:
+
+```text
+Movable
+Fuelable
+```
+
+Interface `Movable` menentukan bahwa class yang menggunakannya harus mempunyai method `move()`.
+
+Sedangkan `Fuelable` menetapkan bahwa class yang menggunakannya harus menyediakan method `refuel()`.
+
+`Car` dan `Boat` merupakan contoh class yang mewarisi `Vehicle` sekaligus mengimplementasikan kedua interface tersebut.
+
+Pada `Boat`, method `refuel()` dapat dibuat khusus untuk menggambarkan proses pengisian bahan bakar kapal.
+
+### Penggunaan Trait
+
+Dalam Java terdapat konsep default method pada interface. Pada PHP, pendekatan tersebut tidak digunakan dengan cara yang sama.
+
+Sebagai alternatif digunakan `FuelableDefault` dalam bentuk **trait**.
+
+Trait tersebut menyediakan implementasi `refuel()` yang dapat digunakan kembali oleh class lain.
+
+Pada `Motor`, trait digunakan dengan:
+
+```php
+use FuelableDefault;
+```
+
+Dengan begitu, `Motor` dapat memperoleh method `refuel()` dari trait tanpa harus membuat ulang method tersebut.
+
+Sedangkan `Building` hanya mewarisi `Vehicle`. Karena tidak menggunakan `Movable` maupun `Fuelable`, class tersebut tidak memiliki kewajiban untuk menyediakan `move()` dan `refuel()`.
+
+---
+
+# Ringkasan Perbedaan Java dan PHP
+
+| **Konsep**                         | **Java**                              | **PHP**                        |
+| ---------------------------------- | ------------------------------------- | ------------------------------ |
+| Constructor                        | Nama constructor mengikuti nama class | `__construct()`                |
+| Mengakses object                   | `this.nama`                           | `$this->nama`                  |
+| Menampilkan output                 | `System.out.println()`                | `echo ... . PHP_EOL;`          |
+| Pewarisan                          | `extends`                             | `extends`                      |
+| Memanggil constructor induk        | `super()`                             | `parent::__construct()`        |
+| Constructor dengan beberapa bentuk | Overloading                           | Default parameter / `...$args` |
+| Mengecek tipe object               | `instanceof`                          | `instanceof`                   |
+| Casting object                     | Umumnya digunakan setelah pengecekan  | Tidak selalu diperlukan        |
+| Default method                     | Dapat digunakan pada interface        | Dapat digantikan dengan trait  |
+| List data                          | `List<T>` / `ArrayList`               | `array`                        |
+| Akses member object                | `.`                                   | `->`                           |
+| Penggabungan string                | `+`                                   | `.`                            |
+
+---
+
+# Kesimpulan
+
+Dari seluruh materi yang dikerjakan, dapat dilihat bahwa Java dan PHP sama-sama mendukung konsep dasar **Object-Oriented Programming**. Perbedaannya lebih banyak terdapat pada aturan sintaks dan cara beberapa fitur diterapkan.
+
+Materi pertama sampai terakhir menunjukkan proses penggunaan class, pembuatan object, constructor, pewarisan, polymorphism, hubungan antar-object, hingga abstract class dan interface.
+
+Melalui konversi program dari Java ke PHP, konsep OOP tidak hanya dipahami dari sisi teori, tetapi juga dapat
