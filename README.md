@@ -100,11 +100,4 @@ Perbedaan penting dari Java: interface di PHP tidak bisa memiliki default method
 Motor memakai trait tersebut lewat use FuelableDefault;, sehingga tidak perlu menulis ulang refuel(). Kontrak Fuelable tetap terpenuhi karena method-nya sudah dibawa oleh trait.
 Building hanya mewarisi Vehicle dan tidak mengimplementasikan interface apa pun. Akibatnya ia hanya punya showInfo(), tanpa move() dan refuel(). Memanggil kedua method itu pada Building akan menimbulkan error, dan itulah alasan kedua barisnya dikomentari di Main.php.
 
-Hal	Java	PHP
-Variabel	String color (wajib tulis tipe)	$color (diawali $)
-Akses method/property	obj.getColor()	$obj->getColor()
-Gabung string	"a" + "b"	"a" . "b"
-Cetak	System.out.println()	echo
-Pindah baris	\n / println	PHP_EOL
-Referensi diri	this.color	$this->color
-Akses method statis / induk	Kelas.method() / super.method()	Kelas::method() / parent::method()
+<img width="593" height="272" alt="image" src="https://github.com/user-attachments/assets/36087306-f76f-4088-9d8b-94cea801eb42" />
