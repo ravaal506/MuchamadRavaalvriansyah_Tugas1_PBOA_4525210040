@@ -13,7 +13,8 @@
 
 **Screenshot:**
 
-[SS Materi 01](img/01.png)
+<img width="957" height="548" alt="01" src="https://github.com/user-attachments/assets/c26643c3-8061-42ff-80dd-c6c4e529a9bc" />
+
 
 ### Penjelasan
 
@@ -40,7 +41,8 @@ Jadi, materi ini menunjukkan bahwa **class berfungsi sebagai rancangan**, sedang
 
 **Screenshot:**
 
-[SS Materi 02](img/02.png)
+<img width="932" height="554" alt="02" src="https://github.com/user-attachments/assets/4fdc53e8-51ca-490e-a62d-c0ed407e3b51" />
+
 
 ### Penjelasan
 
@@ -88,11 +90,13 @@ Method `tampilkanInfo()` kemudian digunakan untuk menampilkan informasi mahasisw
 
 ### Screenshot `App.php`
 
-[SS Materi 03 App](img/03app.png)
+<img width="954" height="551" alt="03 app" src="https://github.com/user-attachments/assets/3423ba77-b35d-4c5f-879e-9e9fddbd297c" />
+
 
 ### Screenshot `Main.php`
 
-[SS Materi 03 Main](img/03main.png)
+<img width="959" height="535" alt="03 main" src="https://github.com/user-attachments/assets/0187c2a5-6cb1-4b58-8cd7-c44734543784" />
+
 
 ### Penjelasan
 
@@ -139,7 +143,8 @@ Untuk membuat hasil perhitungan lebih mudah dibaca, nilai perhitungan luas dan k
 
 **Screenshot:**
 
-[SS Materi 04](img/04.png)
+<img width="451" height="170" alt="04" src="https://github.com/user-attachments/assets/ca60104a-b58a-41fc-bf4a-9bd378a9be10" />
+
 
 ### Penjelasan
 
@@ -183,7 +188,8 @@ Property `protected` digunakan agar property dapat digunakan oleh class turunan 
 
 **Screenshot:**
 
-[SS Materi 05](img/05.png)
+<img width="456" height="146" alt="05" src="https://github.com/user-attachments/assets/b8e84991-30ee-4554-8f89-ece33ebbd94c" />
+
 
 ### Penjelasan
 
@@ -243,7 +249,8 @@ Pada saat melakukan konversi dari Java, struktur `List<Pemain>` dapat digantikan
 
 **Screenshot:**
 
-[SS Materi 06](img/06.png)
+<img width="1376" height="264" alt="06" src="https://github.com/user-attachments/assets/5417a23f-62df-438c-82d4-a05df06bbe5a" />
+
 
 ### Penjelasan
 
